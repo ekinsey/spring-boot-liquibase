@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: @jdbc.url@
+    username: @jdbc.username@
+    password: @jdbc.password@
+    driver-class-name: @jdbc.driverClassName@
+    hikari:
+      connection-test-query: SELECT 1
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      maximum-pool-size: 20
+      pool-name: liquibase-pool
+  jpa:
+    database-platform: @hibernate.dialect@
+  liquibase:
+    enabled: false
+    url: @jdbc.url@
+    user: @jdbc.username@
+    password: @jdbc.password@
+    driver-class-name: @jdbc.driverClassName@
+    change-log: @liquibase.change-log@

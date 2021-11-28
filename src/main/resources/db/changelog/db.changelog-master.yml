@@ -1,0 +1,517 @@
+databaseChangeLog:
+- changeSet:
+    id: 1638140401085-1
+    author: Eairrick Kinsey
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: customerNumber
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: customerName
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: contactLastName
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: contactFirstName
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: phone
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: addressLine1
+            type: VARCHAR(50)
+        - column:
+            name: addressLine2
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: city
+            type: VARCHAR(50)
+        - column:
+            name: state
+            type: VARCHAR(50)
+        - column:
+            name: postalCode
+            type: VARCHAR(15)
+        - column:
+            constraints:
+              nullable: false
+            name: country
+            type: VARCHAR(50)
+        - column:
+            name: salesRepEmployeeNumber
+            type: INT
+        - column:
+            name: creditLimit
+            type: DECIMAL(10, 2)
+        tableName: customers
+- changeSet:
+    id: 1638140401085-2
+    author: Eairrick Kinsey
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: employeeNumber
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: lastName
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: firstName
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: extension
+            type: VARCHAR(10)
+        - column:
+            constraints:
+              nullable: false
+            name: email
+            type: VARCHAR(100)
+        - column:
+            constraints:
+              nullable: false
+            name: officeCode
+            type: VARCHAR(10)
+        - column:
+            name: reportsTo
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: jobTitle
+            type: VARCHAR(50)
+        tableName: employees
+- changeSet:
+    id: 1638140401085-3
+    author: Eairrick Kinsey
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: officeCode
+            type: VARCHAR(10)
+        - column:
+            constraints:
+              nullable: false
+            name: city
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: phone
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: addressLine1
+            type: VARCHAR(50)
+        - column:
+            name: addressLine2
+            type: VARCHAR(50)
+        - column:
+            name: state
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: country
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: postalCode
+            type: VARCHAR(15)
+        - column:
+            constraints:
+              nullable: false
+            name: territory
+            type: VARCHAR(10)
+        tableName: offices
+- changeSet:
+    id: 1638140401085-4
+    author: Eairrick Kinsey
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: orderNumber
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: productCode
+            type: VARCHAR(15)
+        - column:
+            constraints:
+              nullable: false
+            name: quantityOrdered
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: priceEach
+            type: DECIMAL(10, 2)
+        - column:
+            constraints:
+              nullable: false
+            name: orderLineNumber
+            type: SMALLINT
+        tableName: orderdetails
+- changeSet:
+    id: 1638140401085-5
+    author: Eairrick Kinsey
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: orderNumber
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: orderDate
+            type: date
+        - column:
+            constraints:
+              nullable: false
+            name: requiredDate
+            type: date
+        - column:
+            name: shippedDate
+            type: date
+        - column:
+            constraints:
+              nullable: false
+            name: status
+            type: VARCHAR(15)
+        - column:
+            name: comments
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: customerNumber
+            type: INT
+        tableName: orders
+- changeSet:
+    id: 1638140401085-6
+    author: Eairrick Kinsey
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: customerNumber
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: checkNumber
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: paymentDate
+            type: date
+        - column:
+            constraints:
+              nullable: false
+            name: amount
+            type: DECIMAL(10, 2)
+        tableName: payments
+- changeSet:
+    id: 1638140401085-7
+    author: Eairrick Kinsey
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: productLine
+            type: VARCHAR(50)
+        - column:
+            name: textDescription
+            type: VARCHAR(4000)
+        - column:
+            name: htmlDescription
+            type: MEDIUMTEXT
+        - column:
+            name: image
+            type: MEDIUMBLOB
+        tableName: productlines
+- changeSet:
+    id: 1638140401085-8
+    author: Eairrick Kinsey
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: productCode
+            type: VARCHAR(15)
+        - column:
+            constraints:
+              nullable: false
+            name: productName
+            type: VARCHAR(70)
+        - column:
+            constraints:
+              nullable: false
+            name: productLine
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: productScale
+            type: VARCHAR(10)
+        - column:
+            constraints:
+              nullable: false
+            name: productVendor
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: productDescription
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: quantityInStock
+            type: SMALLINT
+        - column:
+            constraints:
+              nullable: false
+            name: buyPrice
+            type: DECIMAL(10, 2)
+        - column:
+            constraints:
+              nullable: false
+            name: MSRP
+            type: DECIMAL(10, 2)
+        tableName: products
+- changeSet:
+    id: 1638140401085-9
+    author: Eairrick Kinsey
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: customerNumber
+        indexName: customerNumber
+        tableName: orders
+- changeSet:
+    id: 1638140401085-10
+    author: Eairrick Kinsey
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: officeCode
+        indexName: officeCode
+        tableName: employees
+- changeSet:
+    id: 1638140401085-11
+    author: Eairrick Kinsey
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: productCode
+        indexName: productCode
+        tableName: orderdetails
+- changeSet:
+    id: 1638140401085-12
+    author: Eairrick Kinsey
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: productLine
+        indexName: productLine
+        tableName: products
+- changeSet:
+    id: 1638140401085-13
+    author: Eairrick Kinsey
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: reportsTo
+        indexName: reportsTo
+        tableName: employees
+- changeSet:
+    id: 1638140401085-14
+    author: Eairrick Kinsey
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: salesRepEmployeeNumber
+        indexName: salesRepEmployeeNumber
+        tableName: customers
+- changeSet:
+    id: 1638140401085-15
+    author: Eairrick Kinsey
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: salesRepEmployeeNumber
+        baseTableName: customers
+        constraintName: customers_ibfk_1
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: employeeNumber
+        referencedTableName: employees
+        validate: true
+- changeSet:
+    id: 1638140401085-16
+    author: Eairrick Kinsey
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: reportsTo
+        baseTableName: employees
+        constraintName: employees_ibfk_1
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: employeeNumber
+        referencedTableName: employees
+        validate: true
+- changeSet:
+    id: 1638140401085-17
+    author: Eairrick Kinsey
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: officeCode
+        baseTableName: employees
+        constraintName: employees_ibfk_2
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: officeCode
+        referencedTableName: offices
+        validate: true
+- changeSet:
+    id: 1638140401085-18
+    author: Eairrick Kinsey
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: orderNumber
+        baseTableName: orderdetails
+        constraintName: orderdetails_ibfk_1
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: orderNumber
+        referencedTableName: orders
+        validate: true
+- changeSet:
+    id: 1638140401085-19
+    author: Eairrick Kinsey
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: productCode
+        baseTableName: orderdetails
+        constraintName: orderdetails_ibfk_2
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: productCode
+        referencedTableName: products
+        validate: true
+- changeSet:
+    id: 1638140401085-20
+    author: Eairrick Kinsey
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: customerNumber
+        baseTableName: orders
+        constraintName: orders_ibfk_1
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: customerNumber
+        referencedTableName: customers
+        validate: true
+- changeSet:
+    id: 1638140401085-21
+    author: Eairrick Kinsey
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: customerNumber
+        baseTableName: payments
+        constraintName: payments_ibfk_1
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: customerNumber
+        referencedTableName: customers
+        validate: true
+- changeSet:
+    id: 1638140401085-22
+    author: Eairrick Kinsey
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: productLine
+        baseTableName: products
+        constraintName: products_ibfk_1
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: productLine
+        referencedTableName: productlines
+        validate: true
+
