@@ -13,9 +13,13 @@ spring:
   jpa:
     database-platform: @hibernate.dialect@
   liquibase:
-    enabled: false
+    enabled: true
     url: @jdbc.url@
     user: @jdbc.username@
     password: @jdbc.password@
     driver-class-name: @jdbc.driverClassName@
     change-log: @liquibase.change-log@
+logging:
+  level:
+    "liquibase" : debug
+    root: debug

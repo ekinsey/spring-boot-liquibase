@@ -81,6 +81,8 @@
                         <username>${jdbc.username}</username>
                         <password>${jdbc.password}</password>
 						<outputChangeLogFile>${liquibase.change-log}</outputChangeLogFile>
+                        <changeSetAuthor>Eairrick Kinsey</changeSetAuthor>
+                        <dataDir>src/main/resources/db/changelog/data</dataDir>
                     </configuration>
                 </plugin>
             </plugins>

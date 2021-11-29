@@ -57,6 +57,8 @@ public class Customer extends BaseObject  {
     @Column(name = "creditLimit", precision = 10, scale = 2)
     private BigDecimal creditLimit;
 
+    @Column(name = "rating", nullable = true)
+    private String rating;
 
     @Override
     public String toString() {
@@ -88,4 +90,5 @@ public class Customer extends BaseObject  {
     public int hashCode() {
         return Objects.hash(customerName, contactLastName, contactFirstName, phone, addressLine1, addressLine2, city, state, postalCode, country, salesRepEmployeeNumber, creditLimit);
     }
+
 }
