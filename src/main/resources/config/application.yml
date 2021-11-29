@@ -1,3 +1,7 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /liq
 spring:
   datasource:
     url: @jdbc.url@
