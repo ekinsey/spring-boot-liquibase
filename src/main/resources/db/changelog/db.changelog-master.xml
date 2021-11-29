@@ -1,6 +1,13 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
     <changeSet author="Eairrick Kinsey" id="1638180615725-1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="customers"/>
+            </not>
+        </preConditions>
         <createTable tableName="customers">
             <column name="customerNumber" type="INT">
                 <constraints nullable="false" primaryKey="true"/>
@@ -34,6 +41,11 @@
         </createTable>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638180615725-2">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="employees"/>
+            </not>
+        </preConditions>
         <createTable tableName="employees">
             <column name="employeeNumber" type="INT">
                 <constraints nullable="false" primaryKey="true"/>
@@ -59,7 +71,12 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-3">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-3">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="offices"/>
+            </not>
+        </preConditions>
         <createTable tableName="offices">
             <column name="officeCode" type="VARCHAR(10)">
                 <constraints nullable="false" primaryKey="true"/>
@@ -86,7 +103,12 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-4">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-4">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="orderdetails"/>
+            </not>
+        </preConditions>
         <createTable tableName="orderdetails">
             <column name="orderNumber" type="INT">
                 <constraints nullable="false" primaryKey="true"/>
@@ -105,7 +127,12 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-5">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-5">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="orders"/>
+            </not>
+        </preConditions>
         <createTable tableName="orders">
             <column name="orderNumber" type="INT">
                 <constraints nullable="false" primaryKey="true"/>
@@ -126,7 +153,12 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-6">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-6">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="payments"/>
+            </not>
+        </preConditions>
         <createTable tableName="payments">
             <column name="customerNumber" type="INT">
                 <constraints nullable="false" primaryKey="true"/>
@@ -142,7 +174,12 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-7">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-7">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="productlines"/>
+            </not>
+        </preConditions>
         <createTable tableName="productlines">
             <column name="productLine" type="VARCHAR(50)">
                 <constraints nullable="false" primaryKey="true"/>
@@ -152,7 +189,12 @@
             <column name="image" type="MEDIUMBLOB"/>
         </createTable>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-8">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-8">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="products"/>
+            </not>
+        </preConditions>
         <createTable tableName="products">
             <column name="productCode" type="VARCHAR(15)">
                 <constraints nullable="false" primaryKey="true"/>
@@ -183,59 +225,88 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-9">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-9">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists indexName="customerNumber"/>
+            </not>
+        </preConditions>
         <createIndex indexName="customerNumber" tableName="orders">
             <column name="customerNumber"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-10">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-10">
         <createIndex indexName="officeCode" tableName="employees">
             <column name="officeCode"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-11">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-11">
         <createIndex indexName="productCode" tableName="orderdetails">
             <column name="productCode"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-12">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-12">
         <createIndex indexName="productLine" tableName="products">
             <column name="productLine"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-13">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-13">
         <createIndex indexName="reportsTo" tableName="employees">
             <column name="reportsTo"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-14">
+    <changeSet author="Eairrick Kinsey" id="1638180615725-14">
         <createIndex indexName="salesRepEmployeeNumber" tableName="customers">
             <column name="salesRepEmployeeNumber"/>
         </createIndex>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-15">
-        <addForeignKeyConstraint baseColumnNames="salesRepEmployeeNumber" baseTableName="customers" constraintName="customers_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="employeeNumber" referencedTableName="employees" validate="true"/>
+    <changeSet author="Eairrick Kinsey" id="1638180615725-15">
+        <addForeignKeyConstraint baseColumnNames="salesRepEmployeeNumber" baseTableName="customers"
+                                 constraintName="customers_ibfk_1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="employeeNumber"
+                                 referencedTableName="employees" validate="true"/>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-16">
-        <addForeignKeyConstraint baseColumnNames="reportsTo" baseTableName="employees" constraintName="employees_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="employeeNumber" referencedTableName="employees" validate="true"/>
+    <changeSet author="Eairrick Kinsey" id="1638180615725-16">
+        <addForeignKeyConstraint baseColumnNames="reportsTo" baseTableName="employees" constraintName="employees_ibfk_1"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="employeeNumber" referencedTableName="employees"
+                                 validate="true"/>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-17">
-        <addForeignKeyConstraint baseColumnNames="officeCode" baseTableName="employees" constraintName="employees_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="officeCode" referencedTableName="offices" validate="true"/>
+    <changeSet author="Eairrick Kinsey" id="1638180615725-17">
+        <addForeignKeyConstraint baseColumnNames="officeCode" baseTableName="employees"
+                                 constraintName="employees_ibfk_2" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="officeCode"
+                                 referencedTableName="offices" validate="true"/>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-18">
-        <addForeignKeyConstraint baseColumnNames="orderNumber" baseTableName="orderdetails" constraintName="orderdetails_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="orderNumber" referencedTableName="orders" validate="true"/>
+    <changeSet author="Eairrick Kinsey" id="1638180615725-18">
+        <addForeignKeyConstraint baseColumnNames="orderNumber" baseTableName="orderdetails"
+                                 constraintName="orderdetails_ibfk_1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="orderNumber"
+                                 referencedTableName="orders" validate="true"/>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-19">
-        <addForeignKeyConstraint baseColumnNames="productCode" baseTableName="orderdetails" constraintName="orderdetails_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="productCode" referencedTableName="products" validate="true"/>
+    <changeSet author="Eairrick Kinsey" id="1638180615725-19">
+        <addForeignKeyConstraint baseColumnNames="productCode" baseTableName="orderdetails"
+                                 constraintName="orderdetails_ibfk_2" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="productCode"
+                                 referencedTableName="products" validate="true"/>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-20">
-        <addForeignKeyConstraint baseColumnNames="customerNumber" baseTableName="orders" constraintName="orders_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="customerNumber" referencedTableName="customers" validate="true"/>
+    <changeSet author="Eairrick Kinsey" id="1638180615725-20">
+        <addForeignKeyConstraint baseColumnNames="customerNumber" baseTableName="orders" constraintName="orders_ibfk_1"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="customerNumber" referencedTableName="customers"
+                                 validate="true"/>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-21">
-        <addForeignKeyConstraint baseColumnNames="customerNumber" baseTableName="payments" constraintName="payments_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="customerNumber" referencedTableName="customers" validate="true"/>
+    <changeSet author="Eairrick Kinsey" id="1638180615725-21">
+        <addForeignKeyConstraint baseColumnNames="customerNumber" baseTableName="payments"
+                                 constraintName="payments_ibfk_1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="customerNumber"
+                                 referencedTableName="customers" validate="true"/>
     </changeSet>
-    <changeSet author="Eairrick Kinsey"  id="1638180615725-22">
-        <addForeignKeyConstraint baseColumnNames="productLine" baseTableName="products" constraintName="products_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="productLine" referencedTableName="productlines" validate="true"/>
+    <changeSet author="Eairrick Kinsey" id="1638180615725-22">
+        <addForeignKeyConstraint baseColumnNames="productLine" baseTableName="products" constraintName="products_ibfk_1"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="productLine" referencedTableName="productlines"
+                                 validate="true"/>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-1">
         <createTable tableName="customers">
@@ -421,7 +492,8 @@
         </createTable>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-9">
-        <loadData commentLineStartsWith="#" encoding="UTF-8" file="src/main/resources/db/changelog/data/customers.csv" quotchar="&quot;" separator="," tableName="customers">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/customers.csv" quotchar="&quot;" separator=","
+                  tableName="customers" relativeToChangelogFile="true">
             <column header="customerNumber" name="customerNumber" type="NUMERIC"/>
             <column header="customerName" name="customerName" type="STRING"/>
             <column header="contactLastName" name="contactLastName" type="STRING"/>
@@ -438,7 +510,8 @@
         </loadData>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-10">
-        <loadData commentLineStartsWith="#" encoding="UTF-8" file="src/main/resources/db/changelog/data/employees.csv" quotchar="&quot;" separator="," tableName="employees">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/employees.csv" quotchar="&quot;" separator=","
+                  tableName="employees" relativeToChangelogFile="true">
             <column header="employeeNumber" name="employeeNumber" type="NUMERIC"/>
             <column header="lastName" name="lastName" type="STRING"/>
             <column header="firstName" name="firstName" type="STRING"/>
@@ -450,7 +523,8 @@
         </loadData>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-11">
-        <loadData commentLineStartsWith="#" encoding="UTF-8" file="src/main/resources/db/changelog/data/offices.csv" quotchar="&quot;" separator="," tableName="offices">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/offices.csv" quotchar="&quot;" separator=","
+                  tableName="offices" relativeToChangelogFile="true">
             <column header="officeCode" name="officeCode" type="STRING"/>
             <column header="city" name="city" type="STRING"/>
             <column header="phone" name="phone" type="STRING"/>
@@ -463,7 +537,8 @@
         </loadData>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-12">
-        <loadData commentLineStartsWith="#" encoding="UTF-8" file="src/main/resources/db/changelog/data/orderdetails.csv" quotchar="&quot;" separator="," tableName="orderdetails">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/orderdetails.csv" quotchar="&quot;"
+                  separator="," tableName="orderdetails" relativeToChangelogFile="true">
             <column header="orderNumber" name="orderNumber" type="NUMERIC"/>
             <column header="productCode" name="productCode" type="STRING"/>
             <column header="quantityOrdered" name="quantityOrdered" type="NUMERIC"/>
@@ -472,7 +547,8 @@
         </loadData>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-13">
-        <loadData commentLineStartsWith="#" encoding="UTF-8" file="src/main/resources/db/changelog/data/orders.csv" quotchar="&quot;" separator="," tableName="orders">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/orders.csv" quotchar="&quot;" separator=","
+                  tableName="orders" relativeToChangelogFile="true">
             <column header="orderNumber" name="orderNumber" type="NUMERIC"/>
             <column header="orderDate" name="orderDate" type="DATE"/>
             <column header="requiredDate" name="requiredDate" type="DATE"/>
@@ -483,7 +559,8 @@
         </loadData>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-14">
-        <loadData commentLineStartsWith="#" encoding="UTF-8" file="src/main/resources/db/changelog/data/payments.csv" quotchar="&quot;" separator="," tableName="payments">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/payments.csv" quotchar="&quot;" separator=","
+                  tableName="payments" relativeToChangelogFile="true">
             <column header="customerNumber" name="customerNumber" type="NUMERIC"/>
             <column header="checkNumber" name="checkNumber" type="STRING"/>
             <column header="paymentDate" name="paymentDate" type="DATE"/>
@@ -491,7 +568,8 @@
         </loadData>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-15">
-        <loadData commentLineStartsWith="#" encoding="UTF-8" file="src/main/resources/db/changelog/data/productlines.csv" quotchar="&quot;" separator="," tableName="productlines">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/productlines.csv" quotchar="&quot;"
+                  separator="," tableName="productlines" relativeToChangelogFile="true">
             <column header="productLine" name="productLine" type="STRING"/>
             <column header="textDescription" name="textDescription" type="STRING"/>
             <column header="htmlDescription" name="htmlDescription" type="skip"/>
@@ -499,7 +577,8 @@
         </loadData>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-16">
-        <loadData commentLineStartsWith="#" encoding="UTF-8" file="src/main/resources/db/changelog/data/products.csv" quotchar="&quot;" separator="," tableName="products">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/products.csv" quotchar="&quot;" separator=","
+                  tableName="products" relativeToChangelogFile="true">
             <column header="productCode" name="productCode" type="STRING"/>
             <column header="productName" name="productName" type="STRING"/>
             <column header="productLine" name="productLine" type="STRING"/>
@@ -542,27 +621,51 @@
         </createIndex>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-23">
-        <addForeignKeyConstraint baseColumnNames="salesRepEmployeeNumber" baseTableName="customers" constraintName="customers_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="employeeNumber" referencedTableName="employees" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="salesRepEmployeeNumber" baseTableName="customers"
+                                 constraintName="customers_ibfk_1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="employeeNumber"
+                                 referencedTableName="employees" validate="true"/>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-24">
-        <addForeignKeyConstraint baseColumnNames="reportsTo" baseTableName="employees" constraintName="employees_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="employeeNumber" referencedTableName="employees" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="reportsTo" baseTableName="employees" constraintName="employees_ibfk_1"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="employeeNumber" referencedTableName="employees"
+                                 validate="true"/>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-25">
-        <addForeignKeyConstraint baseColumnNames="officeCode" baseTableName="employees" constraintName="employees_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="officeCode" referencedTableName="offices" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="officeCode" baseTableName="employees"
+                                 constraintName="employees_ibfk_2" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="officeCode"
+                                 referencedTableName="offices" validate="true"/>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-26">
-        <addForeignKeyConstraint baseColumnNames="orderNumber" baseTableName="orderdetails" constraintName="orderdetails_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="orderNumber" referencedTableName="orders" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="orderNumber" baseTableName="orderdetails"
+                                 constraintName="orderdetails_ibfk_1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="orderNumber"
+                                 referencedTableName="orders" validate="true"/>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-27">
-        <addForeignKeyConstraint baseColumnNames="productCode" baseTableName="orderdetails" constraintName="orderdetails_ibfk_2" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="productCode" referencedTableName="products" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="productCode" baseTableName="orderdetails"
+                                 constraintName="orderdetails_ibfk_2" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="productCode"
+                                 referencedTableName="products" validate="true"/>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-28">
-        <addForeignKeyConstraint baseColumnNames="customerNumber" baseTableName="orders" constraintName="orders_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="customerNumber" referencedTableName="customers" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="customerNumber" baseTableName="orders" constraintName="orders_ibfk_1"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="customerNumber" referencedTableName="customers"
+                                 validate="true"/>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-29">
-        <addForeignKeyConstraint baseColumnNames="customerNumber" baseTableName="payments" constraintName="payments_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="customerNumber" referencedTableName="customers" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="customerNumber" baseTableName="payments"
+                                 constraintName="payments_ibfk_1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="customerNumber"
+                                 referencedTableName="customers" validate="true"/>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-30">
-        <addForeignKeyConstraint baseColumnNames="productLine" baseTableName="products" constraintName="products_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="productLine" referencedTableName="productlines" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="productLine" baseTableName="products" constraintName="products_ibfk_1"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="productLine" referencedTableName="productlines"
+                                 validate="true"/>
     </changeSet>
 </databaseChangeLog>
