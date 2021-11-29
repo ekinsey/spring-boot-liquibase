@@ -22,7 +22,7 @@
         <jdbc.username>springthroot</jdbc.username>
         <jdbc.password>24esther</jdbc.password>
         <jdbc.url>jdbc:mysql://${jdbc.hostname}/${db.name}?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true</jdbc.url>
-        <liquibase.change-log>src/main/resources/db/changelog/db.changelog-master.yml</liquibase.change-log>
+        <liquibase.change-log>src/main/resources/db/changelog/db.changelog-master.xml</liquibase.change-log>
     </properties>
     <dependencies>
         <dependency>
