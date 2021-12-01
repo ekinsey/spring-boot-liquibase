@@ -1,8 +1,13 @@
 server:
   port: 8085
   servlet:
-    context-path: /liq
+    context-path: /liqui
 spring:
+  application:
+    name: liqui
+  config:
+    activate:
+      on-profile:
   datasource:
     url: @jdbc.url@
     username: @jdbc.username@

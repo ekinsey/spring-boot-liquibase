@@ -376,8 +376,49 @@
                                  validate="true"/>
     </changeSet>
     <changeSet author="Eairrick Kinsey" id="1638192633705-9">
+        <loadUpdateData primaryKey="productCode" encoding="UTF-8" file="data/products.csv" quotchar="&quot;" separator=","
+                        tableName="products" relativeToChangelogFile="true">
+            <column header="productCode" name="productCode" type="STRING"/>
+            <column header="productName" name="productName" type="STRING"/>
+            <column header="productLine" name="productLine" type="STRING"/>
+            <column header="productScale" name="productScale" type="STRING"/>
+            <column header="productVendor" name="productVendor" type="STRING"/>
+            <column header="productDescription" name="productDescription" type="STRING"/>
+            <column header="quantityInStock" name="quantityInStock" type="NUMERIC"/>
+            <column header="buyPrice" name="buyPrice" type="NUMERIC"/>
+            <column header="MSRP" name="MSRP" type="NUMERIC"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="Eairrick Kinsey" id="1638192633705-10">
+        <loadUpdateData primaryKey="officeCode" encoding="UTF-8" file="data/offices.csv" quotchar="&quot;" separator=","
+                        tableName="offices" relativeToChangelogFile="true">
+            <column header="officeCode" name="officeCode" type="STRING"/>
+            <column header="city" name="city" type="STRING"/>
+            <column header="phone" name="phone" type="STRING"/>
+            <column header="addressLine1" name="addressLine1" type="STRING"/>
+            <column header="addressLine2" name="addressLine2" type="STRING"/>
+            <column header="state" name="state" type="STRING"/>
+            <column header="country" name="country" type="STRING"/>
+            <column header="postalCode" name="postalCode" type="STRING"/>
+            <column header="territory" name="territory" type="STRING"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="Eairrick Kinsey" id="1638192633705-11">
+        <loadUpdateData primaryKey="employeeNumber" encoding="UTF-8" file="data/employees.csv" quotchar="&quot;" separator=","
+                  tableName="employees" relativeToChangelogFile="true">
+            <column header="employeeNumber" name="employeeNumber" type="NUMERIC"/>
+            <column header="lastName" name="lastName" type="STRING"/>
+            <column header="firstName" name="firstName" type="STRING"/>
+            <column header="extension" name="extension" type="STRING"/>
+            <column header="email" name="email" type="STRING"/>
+            <column header="officeCode" name="officeCode" type="STRING"/>
+            <column header="reportsTo" name="reportsTo" type="NUMERIC"/>
+            <column header="jobTitle" name="jobTitle" type="STRING"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="Eairrick Kinsey" id="1638192633705-12">
         <loadUpdateData encoding="UTF-8" file="data/customers.csv" quotchar="&quot;" separator=","
-                  tableName="customers" relativeToChangelogFile="true" primaryKey="customerNumber">
+                        tableName="customers" relativeToChangelogFile="true" primaryKey="customerNumber">
             <column header="customerNumber" name="customerNumber" type="NUMERIC"/>
             <column header="customerName" name="customerName" type="STRING"/>
             <column header="contactLastName" name="contactLastName" type="STRING"/>
@@ -393,34 +434,8 @@
             <column header="creditLimit" name="creditLimit" type="NUMERIC"/>
         </loadUpdateData>
     </changeSet>
-    <changeSet author="Eairrick Kinsey" id="1638192633705-10">
-        <loadUpdateData primaryKey="employeeNumber" encoding="UTF-8" file="data/employees.csv" quotchar="&quot;" separator=","
-                  tableName="employees" relativeToChangelogFile="true">
-            <column header="employeeNumber" name="employeeNumber" type="NUMERIC"/>
-            <column header="lastName" name="lastName" type="STRING"/>
-            <column header="firstName" name="firstName" type="STRING"/>
-            <column header="extension" name="extension" type="STRING"/>
-            <column header="email" name="email" type="STRING"/>
-            <column header="officeCode" name="officeCode" type="STRING"/>
-            <column header="reportsTo" name="reportsTo" type="NUMERIC"/>
-            <column header="jobTitle" name="jobTitle" type="STRING"/>
-        </loadUpdateData>
-    </changeSet>
-    <changeSet author="Eairrick Kinsey" id="1638192633705-11">
-        <loadUpdateData primaryKey="officeCode" encoding="UTF-8" file="data/offices.csv" quotchar="&quot;" separator=","
-                  tableName="offices" relativeToChangelogFile="true">
-            <column header="officeCode" name="officeCode" type="STRING"/>
-            <column header="city" name="city" type="STRING"/>
-            <column header="phone" name="phone" type="STRING"/>
-            <column header="addressLine1" name="addressLine1" type="STRING"/>
-            <column header="addressLine2" name="addressLine2" type="STRING"/>
-            <column header="state" name="state" type="STRING"/>
-            <column header="country" name="country" type="STRING"/>
-            <column header="postalCode" name="postalCode" type="STRING"/>
-            <column header="territory" name="territory" type="STRING"/>
-        </loadUpdateData>
-    </changeSet>
-    <changeSet author="Eairrick Kinsey" id="1638192633705-12">
+
+    <changeSet author="Eairrick Kinsey" id="1638192633705-13">
         <loadUpdateData primaryKey="orderNumber,productCode"  encoding="UTF-8" file="data/orderdetails.csv" quotchar="&quot;"
                   separator="," tableName="orderdetails" relativeToChangelogFile="true">
             <column header="orderNumber" name="orderNumber" type="NUMERIC"/>
@@ -430,7 +445,7 @@
             <column header="orderLineNumber" name="orderLineNumber" type="NUMERIC"/>
         </loadUpdateData>
     </changeSet>
-    <changeSet author="Eairrick Kinsey" id="1638192633705-13">
+    <changeSet author="Eairrick Kinsey" id="1638192633705-14">
         <loadUpdateData primaryKey="orderNumber" encoding="UTF-8" file="data/orders.csv" quotchar="&quot;" separator=","
                   tableName="orders" relativeToChangelogFile="true">
             <column header="orderNumber" name="orderNumber" type="NUMERIC"/>
@@ -442,7 +457,7 @@
             <column header="customerNumber" name="customerNumber" type="NUMERIC"/>
         </loadUpdateData>
     </changeSet>
-    <changeSet author="Eairrick Kinsey" id="1638192633705-14">
+    <changeSet author="Eairrick Kinsey" id="1638192633705-15">
         <loadUpdateData primaryKey="customerNumber, checkNumber" encoding="UTF-8" file="data/payments.csv" quotchar="&quot;" separator=","
                   tableName="payments" relativeToChangelogFile="true">
             <column header="customerNumber" name="customerNumber" type="NUMERIC"/>
@@ -451,7 +466,7 @@
             <column header="amount" name="amount" type="NUMERIC"/>
         </loadUpdateData>
     </changeSet>
-    <changeSet author="Eairrick Kinsey" id="1638192633705-15">
+    <changeSet author="Eairrick Kinsey" id="1638192633705-16">
         <loadUpdateData encoding="UTF-8" primaryKey="productLine" file="data/productlines.csv" quotchar="&quot;"
                   separator="," tableName="productlines" relativeToChangelogFile="true">
             <column header="productLine" name="productLine" type="STRING"/>
@@ -460,19 +475,6 @@
             <column header="image" name="image" type="skip"/>
         </loadUpdateData>
     </changeSet>
-    <changeSet author="Eairrick Kinsey" id="1638192633705-16">
-        <loadUpdateData primaryKey="productCode" encoding="UTF-8" file="data/products.csv" quotchar="&quot;" separator=","
-                  tableName="products" relativeToChangelogFile="true">
-            <column header="productCode" name="productCode" type="STRING"/>
-            <column header="productName" name="productName" type="STRING"/>
-            <column header="productLine" name="productLine" type="STRING"/>
-            <column header="productScale" name="productScale" type="STRING"/>
-            <column header="productVendor" name="productVendor" type="STRING"/>
-            <column header="productDescription" name="productDescription" type="STRING"/>
-            <column header="quantityInStock" name="quantityInStock" type="NUMERIC"/>
-            <column header="buyPrice" name="buyPrice" type="NUMERIC"/>
-            <column header="MSRP" name="MSRP" type="NUMERIC"/>
-        </loadUpdateData>
-    </changeSet>
+
     <include file="db/changelog/2021/11/29-01-changelog.xml"/>
 </databaseChangeLog>
