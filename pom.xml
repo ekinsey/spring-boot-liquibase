@@ -22,7 +22,9 @@
         <jdbc.username>springthroot</jdbc.username>
         <jdbc.password>24esther</jdbc.password>
         <jdbc.url>jdbc:mysql://${jdbc.hostname}/${db.name}?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true</jdbc.url>
-        <liquibase.change-log>classpath:db/changelog/db.changelog-master.xml</liquibase.change-log>
+        <liquibase.output-change-log-spring>classpath:db/changelog/db.changelog-master.xml</liquibase.output-change-log-spring>
+        <liquibase.output-change-log>src/main/resources/db/changelog/db.changelog-master.xml</liquibase.output-change-log>
+        <liquibase.change-log>src/main/resources/db/changelog/db.changelog-master.xml</liquibase.change-log>
         <liquibase.dataDir>src/main/resources/db/changelog/data</liquibase.dataDir>
     </properties>
     <dependencies>
@@ -85,9 +87,13 @@
                         <url>${jdbc.url}</url>
                         <username>${jdbc.username}</username>
                         <password>${jdbc.password}</password>
-						<outputChangeLogFile>${liquibase.change-log}</outputChangeLogFile>
+                        <outputChangeLogFile>${liquibase.output-change-log}</outputChangeLogFile>
+                        <changeLogFile>${liquibase.change-log}</changeLogFile>
                         <changeSetAuthor>Eairrick Kinsey</changeSetAuthor>
                         <dataDir>${liquibase.dataDir}</dataDir>
+                        <hubApiKey>nAgh31RYkTkcYrbjQhMg_dJDCwYROULn2Kyouz14jk0</hubApiKey>
+                        <hubProjectId>4fbf6956-2a8c-4cc1-a17b-614acdfba92b</hubProjectId>
+                        <hubMode>all</hubMode>
                     </configuration>
                 </plugin>
             </plugins>

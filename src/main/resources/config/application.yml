@@ -27,7 +27,7 @@ spring:
     user: @jdbc.username@
     password: @jdbc.password@
     driver-class-name: @jdbc.driverClassName@
-    change-log: @liquibase.change-log@
+    change-log: @liquibase.output-change-log-spring@
 logging:
   level:
     "liquibase" : debug
